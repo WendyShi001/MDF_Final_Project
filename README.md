@@ -32,13 +32,25 @@ The repository is organized as follows:
 1. **Download Raw Data**
       - Visit the [NYC TLC Trip Record Data page](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
       - Download six monthly yellow taxi data from **August 2024 to January 2025**
+        - `yellow_tripdata_2025-01.parquet`
+        - `yellow_tripdata_2024-12.parquet`
+        - `yellow_tripdata_2024-11.parquet`
+        - `yellow_tripdata_2024-10.parquet`
+        - `yellow_tripdata_2024-09.parquet`
+        - `yellow_tripdata_2024-08.parquet`
+        - **Note**: These data are not included in the git repo
 
-2. **Set Up Cloud Storage**
-      - Create a Google Cloud Bucket and upload the six raw files
+2. **Set Up Cloud Storage** 
+      - Create a Project in Google Cloud Console
+      - Go to your project, under Quick Access, click on Cloud Storage
+      - Under Buckets, click on the plus sign to create a bucket with default setting
+      - Upload the six raw files
+
+4. **Run Preprocessing**
       - Connect the Cloud Storage with BigQuery
-
-3. **Run Preprocessing**
-      - Use `BigQuery_Preprocessing.sql` to clean and prepare the data in Google BigQuery
+        - Go to BigQuery Workbench, under `create new`, select SQL query 
+        - In the Explorer panel, click `Add data`, select Google Cloud Storage, and manually connect the SQL Workbench to your storage bucket.
+      - Upload all code from `BigQuery_Preprocessing.sql` in SQL Workbench to clean and prepare the data in Google BigQuery
       - The preprocessing includes:
         - Created hourly panel for Manhattan zones
         - Generated hourly timestamps for the target date range
@@ -54,15 +66,15 @@ The repository is organized as follows:
       - Saved the processed data locally as `Processed.csv` to create data visualization and geospatial analysis
         - This data is not included in this git repo due to file size
 
-4.	**Run EDA Locally**
+6.	**Run EDA Locally**
       - Use `EDA.ipynb` to explore trends and patterns
 
-5.	**Train and Evaluate Models in the Cloud** 
+7.	**Train and Evaluate Models in the Cloud** 
       - Enable **Vertex AI** API and create an instance with default settings in the workbench.
       - Open **Jupyter Lab** and upload `ML_Cloud.ipynb` to run machine learning code
         - The notebook trains and evaluates the machine learning models using cleaned data
 
-7. **Review Visualizations**
+8. **Review Visualizations**
       - View final figures in the `Visualization/` folder
       - Key outputs: demand trends, model performance, geospatial zone analysis
 ---

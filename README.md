@@ -31,10 +31,10 @@ The repository is organized as follows:
 
 1. **Download Raw Data**
       - Visit the [NYC TLC Trip Record Data page](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
-      - Download yellow taxi data from **August 2024 to January 2025**
+      - Download six monthly yellow taxi data from **August 2024 to January 2025**
 
 2. **Set Up Cloud Storage**
-      - Create a Google Cloud Bucket and upload the raw CSV files
+      - Create a Google Cloud Bucket and upload the six raw files
       - Connect the Cloud Storage with BigQuery
 
 3. **Run Preprocessing**
@@ -51,15 +51,18 @@ The repository is organized as follows:
         - Computed rolling 3-hour average
         - Generated zone-level dummy variables
         - Created final feature table for modeling
+      - Saved the processed data locally as `Processed.csv` to create data visualization and geospatial analysis
+        - This data is not included in this git repo due to file size
 
 4.	**Run EDA Locally**
       - Use `EDA.ipynb` to explore trends and patterns
 
-5.	**Train and Evaluate Models in the Cloud**
-      - Run `ML_Cloud.ipynb` in a cloud-based Jupyter environment (e.g., Vertex AI)
-      - This notebook trains and evaluates the machine learning models using cleaned data
+5.	**Train and Evaluate Models in the Cloud** 
+      - Enable **Vertex AI** API and create an instance with default settings in the workbench.
+      - Open **Jupyter Lab** and upload `ML_Cloud.ipynb` to run machine learning code
+        - The notebook trains and evaluates the machine learning models using cleaned data
 
-6. **Review Visualizations**
+7. **Review Visualizations**
       - View final figures in the `Visualization/` folder
       - Key outputs: demand trends, model performance, geospatial zone analysis
 ---
@@ -70,3 +73,8 @@ The repository is organized as follows:
 - `ML_Cloud.ipynb`: Model training using XGBoost, LightGBM, and others
 - `Visualization/*.png`: Final figures for presentation and reporting
 - `BigQuery_Preprocessing.sql`: SQL script to clean raw TLC data in BigQuery
+
+## Reference
+Gangrade, A., Pratyush, P., & Hajela, G. (2022). Taxi-demand forecasting using dynamic spatiotemporal analysis. ETRI Journal, 44(4), 624–640. https://doi.org/10.4218/etrij.2021-0123​ 
+
+New York City Taxi & Limousine Commission. (n.d.). TLC trip record data. NYC.gov. Retrieved May 8, 2025, from https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page

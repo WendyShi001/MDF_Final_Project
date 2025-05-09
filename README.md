@@ -1,44 +1,60 @@
 # Massive Data Fundamental: NYC Yellow Taxi Demand Prediction
+> To reproduce the full results, please download the monthly `Yellow Taxi Trip Records` from [NYC TLC](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page) for the period August 2024 to January 2025.
 
-> Note that to generate the full result, please download the monthly `Yellow Taxi Trip Records` in https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page for data from August 2024 to Jan 2025.
-
-View this [website](https://www.notion.so/Massive-Data-Fundamental-Final-Project-NYC-Yellow-Taxi-Demand-Prediction-1dedc0943b7b80ff890cc49bf38c3476?pvs=4) for our full analysis.
+View our [project website](https://www.notion.so/Massive-Data-Fundamental-Final-Project-NYC-Yellow-Taxi-Demand-Prediction-1dedc0943b7b80ff890cc49bf38c3476?pvs=4) for full analysis, visualizations, and conclusions.
 
 ## Description
-A massive data fundamental project that predicts yellow taxi demand across Manhattan using TLC Trip Record Data (Aug 2024–Jan 2025) to support real-time dispatch, urban mobility planning, and transportation policy. The model identifies high-demand zones by time and location to optimize driver allocation and improve operational efficiency.
+A Massive Data Fundamental project that predicts yellow taxi demand across Manhattan using NYC TLC Trip Record Data (Aug 2024–Jan 2025). The model is designed to support **real-time dispatch**, **urban mobility planning**, and **transportation policy** by identifying high-demand zones by location and time of day to optimize driver deployment and improve operational efficiency.
+
 
 ## File Structure
 The repository is organized as follows:
 ```
 .
-├── README.md                     # Project overview and usage instructions
-├── LICENSE                       # License information for the project
-├── data/                         # Datasets used in the analysis
-│   ├── XXX.csv                   # Dataset containing XXX
-│   └── XXX.csv                   # Dataset of XXX
-├── XXX.html                      # HTML output summarizing the project
-└── XXX_files/                    # Supporting files for HTML output (plots, assets)
+├── README.md                        # Project overview and instructions
+├── Code/                            # Code and scripts
+│   ├── EDA.ipynb                    # Exploratory Data Analysis notebook
+│   ├── ML_Cloud.ipynb               # Machine learning model training and cloud integration
+│   └── BigQuery_Preprocessing.sql   # SQL script for preprocessing data in BigQuery
+├── Data/                            # Datasets used in the analysis
+│   └── taxi_zones/                  # Shapefiles for NYC taxi zone boundaries
+│      ├── taxi_zones.shp            # Main shapefile
+│      ├── taxi_zones.dbf            # Attribute table
+│      └── ...
+└── Visualization/                   # Generated figures and result plots
+    ├── 01features_target.png
+    ├── 02Model_Evaluation.png
+    └── ...
 ```
 
-## Replication
+## Replication Steps
 
-- **Step1**: Create a google cloud bucket and downloaded
-- **Step2**to file size `Processed.csv` is not included in this git repo.
-- **Step3**: 
+1. **Download Raw Data**
+      - Visit the [NYC TLC Trip Record Data page](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
+      - Download yellow taxi data from **August 2024 to January 2025**
 
+2. **Set Up Cloud Storage**
+      - Create a Google Cloud Bucket and upload the raw CSV files
+      - Adjust any file paths in `BigQuery_Preprocessing.sql` as needed
 
-   - `XXX.html`: the **primary output of the project**. It contains a comprehensive summary of the analysis, including visualizations and results. Open this file in a web browser for a complete view of the project.
+3. **Run Preprocessing**
+      - Use `BigQuery_Preprocessing.sql` to clean and prepare the data in Google BigQuery
 
-  - data/: Contains datasets used for analysis.
-    - `XXX.csv`: ...
-    - `XXX.csv`: ...
+4.	**Run EDA Locally**
+      - Use `EDA.ipynb` to explore trends and patterns
 
+5.	**Train and Evaluate Models in the Cloud**
+      - Run `ML_Cloud.ipynb` in a cloud-based Jupyter environment (e.g., Vertex AI)
+      - This notebook trains and evaluates the machine learning models using cleaned data
 
-### Instructions for the Project:
+6. **Review Visualizations**
+      - View final figures in the `Visualization/` folder
+      - Key outputs: demand trends, model performance, geospatial zone analysis
+---
 
-1. **Open the Website**:
-  - View the full analysis by opening `website` in your web browser.
+## Outputs
 
-2. **Reproduce the Analysis**:
-   - Run `CODE` to generate the `XXX.html` file.
-   - This ensures all code and results are reproducible.
+- `EDA.ipynb`: EDA on temporal and spatial patterns
+- `ML_Cloud.ipynb`: Model training using XGBoost, LightGBM, and others
+- `Visualization/*.png`: Final figures for presentation and reporting
+- `BigQuery_Preprocessing.sql`: SQL script to clean raw TLC data in BigQuery

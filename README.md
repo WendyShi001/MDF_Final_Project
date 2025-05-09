@@ -35,10 +35,22 @@ The repository is organized as follows:
 
 2. **Set Up Cloud Storage**
       - Create a Google Cloud Bucket and upload the raw CSV files
-      - Adjust any file paths in `BigQuery_Preprocessing.sql` as needed
+      - Connect the Cloud Storage with BigQuery
 
 3. **Run Preprocessing**
       - Use `BigQuery_Preprocessing.sql` to clean and prepare the data in Google BigQuery
+      - The preprocessing includes:
+        - Created hourly panel for Manhattan zones
+        - Generated hourly timestamps for the target date range
+        - Performed Cartesian join to create full zone-time grid
+        - Aggregated trip counts by hour and location
+        - Added holiday indicators
+        - Extracted time-based features (hour, weekday, weekend)
+        - Merged trip data with the complete hourly grid
+        - Created lag features (1h, 24h, 168h)
+        - Computed rolling 3-hour average
+        - Generated zone-level dummy variables
+        - Created final feature table for modeling
 
 4.	**Run EDA Locally**
       - Use `EDA.ipynb` to explore trends and patterns

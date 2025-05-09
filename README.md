@@ -21,6 +21,8 @@ The repository is organized as follows:
 │      ├── taxi_zones.shp            # Main shapefile
 │      ├── taxi_zones.dbf            # Attribute table
 │      └── ...
+├── Final Report/                    # Final Report Folder
+|   └── Final Paper.pdf              # Final Paper PDF 
 └── Visualization/                   # Generated figures and result plots
     ├── 01features_target.png
     ├── 02Model_Evaluation.png

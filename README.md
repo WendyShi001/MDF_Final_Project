@@ -20,7 +20,12 @@ The repository is organized as follows:
 └── XXX_files/                    # Supporting files for HTML output (plots, assets)
 ```
 
-## How to Use the Files
+## Replication
+
+- **Step1**: Create a google cloud bucket and downloaded
+- **Step2**to file size `Processed.csv` is not included in this git repo.
+- **Step3**: 
+
 
    - `XXX.html`: the **primary output of the project**. It contains a comprehensive summary of the analysis, including visualizations and results. Open this file in a web browser for a complete view of the project.
 
